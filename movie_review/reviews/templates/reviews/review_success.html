@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Submitted</title>
+</head>
+<body>
+    <h1>Спасибо вам за отзыв</h1>
+    <p>Ваш отзыв был успешно отправлен.</p>
+    <p>Статус комментария: {{ review.sentiment }}</p>
+    <p>Рейтинг: {{ review.rating }}</p>
+
+    <!-- Добавляем кнопку для возврата к форме нового отзыва -->
+    <a href="{% url 'review_form' %}">
+        <button type="button">Напишите еще один отзыв</button>
+    </a>
+</body>
+</html>

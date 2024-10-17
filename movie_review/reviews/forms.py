@@ -1,6 +1,6 @@
+import re
 from django import forms
 from .models import Review
-import re
 
 class ReviewForm(forms.ModelForm):
     class Meta:
@@ -9,7 +9,7 @@ class ReviewForm(forms.ModelForm):
 
     def clean_text(self):
         text = self.cleaned_data.get('text')
-        # Проверка, содержит ли текст только английские буквы и пробелы
-        if not re.match(r'^[A-Za-z\s]+$', text):
-            raise forms.ValidationError('Вводить можно только текст на английском языке.')
+        # Проверка: английские буквы, пробелы и знаки препинания (, . ! ? ' " - :)
+        if not re.match(r'^[A-Za-z\s.,!?\'"()\-:]+$', text):
+            raise forms.ValidationError('Можно вводить только текст на английском языке, включая знаки препинания.')
         return text
